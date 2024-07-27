@@ -224,20 +224,12 @@ fn fonts() -> Vec<Font> {
 
     // Load All Embedded Fonts
     let lxgw_wen_kai_mono_lite: &[u8] = include_bytes!("../embedded-fonts/LXGWWenKaiMonoLite.ttf");
-    let monaspace_argon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceArgon.ttf");
-    let monaspace_krypton: &[u8] = include_bytes!("../embedded-fonts/MonaspaceKrypton.ttf");
-    let monaspace_neon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceNeon.ttf");
-    let monaspace_radon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceRadon.ttf");
-    let monaspace_xenon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceXenon.ttf");
+    let jetbains_mono : &[u8] = include_bytes!("../embedded-fonts/JetBrainsMono.ttf");
     let stix_two_math_regular: &[u8] = include_bytes!("../embedded-fonts/STIXTwoMath-Regular.ttf");
 
     let embedded_fonts = vec![
         lxgw_wen_kai_mono_lite,
-        monaspace_argon,
-        monaspace_krypton,
-        monaspace_neon,
-        monaspace_radon,
-        monaspace_xenon,
+        jetbains_mono,
         stix_two_math_regular,
     ];
 

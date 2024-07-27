@@ -18,11 +18,27 @@ A document (+ `polylux` library) rendered with `Typst`!
 ]
 
 #polylux-slide[
+  == This slide contains some text
+
+  The quick brown fox jumps over the lazy dog
+
+  *The quick brown fox jumps over the lazy dog*
+
+  _The quick brown fox jumps over the lazy dog_
+
+  *_The quick brown fox jumps over the lazy dog_*
+]
+
+#polylux-slide[
   == This slide contains some Math Formulas
 
   $
-  integral_a^b f(x) d x = lim_(n->infinity) Delta x sum_(i=1)^n f(x_i) space space "where"
-  space space Delta x = (b-a)/n space space "and" space space x_i = a + i Delta x
+  B(P) = (mu_0)/(4pi) integral (I times hat(r)')/(r^('2)) d l = (mu_0)/(4pi) I integral (d l times hat(r)')/(r^('2))
+  $
+
+  $
+  integral_a^b f(x) d x = lim_(n->infinity) Delta x sum_(i=1)^n f(x_i) space "where"
+  space Delta x = (b-a)/n , x_i = a + i Delta x
   $
 ]
 
@@ -30,14 +46,6 @@ A document (+ `polylux` library) rendered with `Typst`!
   == This slide contains some code!
 
   ```rust
-  // This is a comment, and is ignored by the compiler.
-  // You can test this code by clicking the "Run" button over there ->
-  // or if you prefer to use your keyboard, you can use the "Ctrl + Enter"
-  // shortcut.
-
-  // This code is editable, feel free to hack it!
-  // You can always return to the original code by clicking the "Reset" button ->
-
   // This is the main function. 0123 oOiIlL
   fn main() {
       // Statements here are executed when the compiled binary is called.

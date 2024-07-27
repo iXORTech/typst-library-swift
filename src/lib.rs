@@ -8,8 +8,8 @@ uniffi::include_scaffolding!("lib");
 fn add_fallback_font(source: String) -> String {
     format!(
         "#show math.equation: set text(font: \"STIX Two Math\")\
-        \n#show raw: set text(font: \"Monaspace Krypton\")\
-        \n#set text(font: (\"Monaspace Radon\", \"LXGW WenKai Mono Lite\"))\
+        \n#show raw: set text(font: \"JetBrains Mono\")\
+        \n#set text(font: (\"LXGW WenKai Mono Lite\"))\
         \n{}",
         source
     )

@@ -1,0 +1,8 @@
+/target
+/generated
+
+# IntelliJ
+/.idea
+
+# Built Swift Package
+/TypstLibrarySwift

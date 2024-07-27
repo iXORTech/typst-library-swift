@@ -1,4 +1,3 @@
-use std::fmt::format;
 use typst::{eval::Tracer, layout::Abs};
 
 mod typst_wrapper_world;

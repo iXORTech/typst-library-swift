@@ -14,6 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: Install musl-tools
+      run: sudo apt install musl-tools
     - name: Install Rust Toolchain
       run: rustup target add x86_64-apple-darwin aarch64-apple-darwin aarch64-apple-ios x86_64-apple-ios aarch64-apple-ios-sim
     - name: Install cargo-swift

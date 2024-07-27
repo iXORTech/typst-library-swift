@@ -1,5 +1,6 @@
 uniffi::include_scaffolding!("lib");
 
+mod typst_wrapper_world;
 
 // Bindings have to be exposed in a .udl file with the same name as the corresponding .rs file, i.e. lib.udl
 // You can expose top-level functions...

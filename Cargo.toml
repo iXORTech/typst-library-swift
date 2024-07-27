@@ -13,6 +13,24 @@ name = "typst_library_swift"
 [dependencies]
 uniffi = "0.27"
 
+# typst essentials
+typst = "0.11.0"
+comemo = "0.4"
+
+# typst rendering
+typst-svg = "0.11.0"
+
+# Fetching and unzipping packages
+zune-inflate = { version = "0.2", default_features = false, features = [
+  "gzip",
+  "std",
+] }
+tar = "0.4"
+ureq = "2.9"
+
+# utils
+time = "0.3"
+ttf-parser = "0.24.0"
 
 [build-dependencies]
 uniffi = { version = "0.27", features = ["build"] }

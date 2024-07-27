@@ -18,3 +18,11 @@ jobs:
       run: cargo build --verbose
     - name: Run tests
       run: cargo test --verbose
+    - name: Build Swift Package
+      run: cargo swift package
+    - name: Publish Swift Package
+      uses: LarchLiu/actions-save-files@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: package
+        publish_dir: ./TypstLibrarySwift

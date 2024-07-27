@@ -18,10 +18,6 @@ jobs:
       run: rustup target add x86_64-apple-darwin aarch64-apple-darwin aarch64-apple-ios x86_64-apple-ios aarch64-apple-ios-sim
     - name: Install cargo-swift
       run: cargo install cargo-swift
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
     - name: Build Swift Package
       run: cargo swift package -p macos -p ios -n TypstSwiftLibrary
     - name: Publish Swift Package

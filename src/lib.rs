@@ -1,4 +1,4 @@
-use typst::foundations::Smart;
+use std::fmt::format;
 use typst::{eval::Tracer, layout::Abs};
 
 mod typst_wrapper_world;
@@ -6,7 +6,19 @@ mod typst_wrapper_world;
 uniffi::include_scaffolding!("lib");
 
 
+fn add_fallback_font(source: String) -> String {
+    format!(
+        "#show math.equation: set text(font: \"STIX Two Math\")\
+        \n#show raw: set text(font: \"Monaspace Krypton\")\
+        \n#set text(font: (\"Monaspace Radon\", \"LXGW WenKai Mono Lite\"))\
+        \n{}",
+        source
+    )
+}
+
 pub fn get_rendered_document(source: String) -> String {
+    let source = add_fallback_font(source);
+
     let world = typst_wrapper_world::TypstWrapperWorld::new(
         "./".to_owned(), source
     );

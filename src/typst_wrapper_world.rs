@@ -220,21 +220,38 @@ impl typst::World for TypstWrapperWorld {
 
 /// Helper function
 fn fonts() -> Vec<Font> {
-    std::fs::read_dir("fonts")
-        .unwrap()
-        .map(Result::unwrap)
-        .flat_map(|entry| {
-            let path = entry.path();
-            let bytes = std::fs::read(&path).unwrap();
-            let buffer = Bytes::from(bytes);
-            let face_count = ttf_parser::fonts_in_collection(&buffer).unwrap_or(1);
-            (0..face_count).map(move |face| {
-                Font::new(buffer.clone(), face).unwrap_or_else(|| {
-                    panic!("failed to load font from {path:?} (face index {face})")
-                })
-            })
-        })
-        .collect()
+    let mut fonts: Vec<Font> = Vec::new();
+
+    // Load All Embedded Fonts
+    let lxgw_wen_kai_mono_lite: &[u8] = include_bytes!("../embedded-fonts/LXGWWenKaiMonoLite.ttf");
+    let monaspace_argon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceArgon.ttf");
+    let monaspace_krypton: &[u8] = include_bytes!("../embedded-fonts/MonaspaceKrypton.ttf");
+    let monaspace_neon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceNeon.ttf");
+    let monaspace_radon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceRadon.ttf");
+    let monaspace_xenon: &[u8] = include_bytes!("../embedded-fonts/MonaspaceXenon.ttf");
+    let stix_two_math_regular: &[u8] = include_bytes!("../embedded-fonts/STIXTwoMath-Regular.ttf");
+
+    let embedded_fonts = vec![
+        lxgw_wen_kai_mono_lite,
+        monaspace_argon,
+        monaspace_krypton,
+        monaspace_neon,
+        monaspace_radon,
+        monaspace_xenon,
+        stix_two_math_regular,
+    ];
+
+    embedded_fonts.iter().for_each(|font| {
+        let buffer = Bytes::from(font.to_vec());
+        let face_count = ttf_parser::fonts_in_collection(&buffer).unwrap_or(1);
+        for face in 0..face_count {
+            fonts.push(Font::new(buffer.clone(), face).unwrap_or_else(|| {
+                panic!("failed to load font from STIXTwoMath-Regular.ttf (face index {face})")
+            }));
+        }
+    });
+
+    fonts
 }
 
 fn retry<T, E>(mut f: impl FnMut() -> Result<T, E>) -> Result<T, E> {

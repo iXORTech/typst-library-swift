@@ -19,9 +19,7 @@ jobs:
     - name: Install cargo-swift
       run: cargo install cargo-swift
     - name: Build Swift Package
-      run: cargo swift package -p macos -p ios -n TypstSwiftLibrary
-    - name: List all files
-      run: ls -al
+      run: cargo swift package -p macos -p ios -n TypstLibrarySwift
     - name: Publish Swift Package
       uses: LarchLiu/actions-save-files@v1
       with:

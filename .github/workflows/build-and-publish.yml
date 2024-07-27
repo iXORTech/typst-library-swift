@@ -21,7 +21,7 @@ jobs:
     - name: Run tests
       run: cargo test --verbose
     - name: Build Swift Package
-      run: cargo swift package
+      run: cargo swift package -p macos -p ios -n TypstSwiftLibrary
     - name: Publish Swift Package
       uses: LarchLiu/actions-save-files@v1
       with:

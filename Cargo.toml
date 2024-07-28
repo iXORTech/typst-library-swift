@@ -32,6 +32,7 @@ ureq = "2.9"
 # utils
 time = "0.3"
 ttf-parser = "0.24.0"
+thiserror = "1.0.63"
 
 [build-dependencies]
 uniffi = { version = "0.27", features = ["build"] }

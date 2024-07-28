@@ -2091,6 +2091,7 @@ version = "0.1.0"
 dependencies = [
  "comemo",
  "tar",
+ "thiserror",
  "time",
  "ttf-parser 0.24.0",
  "typst",

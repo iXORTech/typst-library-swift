@@ -189,12 +189,25 @@ A document (+ `polylux` library) rendered with `Typst`!
 ]
 "#.to_owned();
 
-        let svg = get_rendered_document_svg(source.clone());
+        let svg = get_rendered_document_svg(source.clone()).unwrap();
         fs::write("./output.svg", svg).expect("Error writing SVG.");
         println!("Created svg: `./output.svg`");
 
-        let pdf = get_rendered_document_pdf(source.clone());
+        let pdf = get_rendered_document_pdf(source.clone()).unwrap();
         fs::write("./output.pdf", pdf).expect("Error writing PDF.");
         println!("Created pdf: `./output.pdf`");
+    }
+
+    #[test]
+    fn test_compilation_error() {
+        let source = r#"
+$
+E = mc^2
+$
+"#.to_owned();
+
+        let r = get_rendered_document_svg(source.clone());
+        assert!(r.is_err());
+        println!("Error: {:?}", r.err().unwrap());
     }
 }

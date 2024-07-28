@@ -1,6 +1,12 @@
+[Error]
+enum DocumentRenderError {
+    "TypstCompilationError",
+};
 
 // Keep this namespace, even when empty - otherwise binding generation will throw an error!
 namespace typst_library_swift {
+    [Throws=DocumentRenderError]
 	string get_rendered_document_svg(string source);
+	[Throws=DocumentRenderError]
 	bytes get_rendered_document_pdf(string source);
 };

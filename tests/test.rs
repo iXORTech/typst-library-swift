@@ -208,6 +208,6 @@ $
 
         let r = get_rendered_document_svg(source.clone());
         assert!(r.is_err());
-        println!("Error: {:?}", r.err().unwrap());
+        println!("{}", r.err().unwrap());
     }
 }

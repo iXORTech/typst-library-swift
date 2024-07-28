@@ -1,12 +1,27 @@
-[Error]
-enum DocumentRenderError {
-    "TypstCompilationError",
+enum SourceDiagnosticResultSeverity {
+  "Error",
+  "Warning",
+};
+
+dictionary SourceDiagnosticResult {
+    string message;
+    SourceDiagnosticResultSeverity severity;
+    u64 line_start;
+    u64 column_start;
+    u64 line_end;
+    u64 column_end;
+};
+
+[Traits=(Debug)]
+interface TypstCompilationError {
+  string message();
+  sequence<SourceDiagnosticResult> diagnostics();
 };
 
 // Keep this namespace, even when empty - otherwise binding generation will throw an error!
 namespace typst_library_swift {
-    [Throws=DocumentRenderError]
+    [Throws=TypstCompilationError]
 	string get_rendered_document_svg(string source);
-	[Throws=DocumentRenderError]
+	[Throws=TypstCompilationError]
 	bytes get_rendered_document_pdf(string source);
 };

@@ -64,6 +64,10 @@ impl TypstWrapperWorld {
             files: RefCell::new(HashMap::new()),
         }
     }
+
+    pub fn get_source_ref(&self) -> &Source {
+        &self.source
+    }
 }
 
 /// A File that will be stored in the HashMap.

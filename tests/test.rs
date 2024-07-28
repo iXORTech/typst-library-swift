@@ -30,6 +30,127 @@ A document (+ `polylux` library) rendered with `Typst`!
 ]
 
 #polylux-slide[
+  1. Item 1
+  2. Item 2
+    2.1. Subitem 2.1
+
+  - Item 1
+  - Item 2
+    - Subitem 2.1
+]
+
+#polylux-slide[
+  == Symbols
+
+  $
+    [| space |] space || space * space := space ::= space ... \
+    ' space - space =: space != space >> space >= space >>> \
+    << space <= space <<< space -> space |-> space => space |=> \
+    ==> space --> space ~~> space ~> space >-> space ->> space <- \
+    <== space <-- space <~~ space <~ space <-< space <<- space <-> \
+    <=> space <==> space <-->
+  $
+]
+
+#polylux-slide[
+  #text(font: "CMU Concrete")[
+    == CMU Concrete
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "CMU Sans Serif")[
+    == CMU Sans Serif
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "CMU Serif")[
+    == CMU Serif
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "CMU Typewriter Text")[
+    == CMU Typewriter
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "IBM Plex Mono")[
+    == IBM Plex Mono
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "IBM Plex Sans")[
+    == IBM Plex Sans
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
+  #text(font: "IBM Plex Serif")[
+    == IBM Plex Serif
+
+    The quick brown fox jumps over the lazy dog
+
+    *The quick brown fox jumps over the lazy dog*
+
+    _The quick brown fox jumps over the lazy dog_
+
+    *_The quick brown fox jumps over the lazy dog_*
+  ]
+]
+
+#polylux-slide[
   == This slide contains some Math Formulas
 
   $
@@ -57,14 +178,14 @@ A document (+ `polylux` library) rendered with `Typst`!
 ]
 
 #centered-slide[
-    #emph(text(size: 48pt)[
+    #text(size: 48pt)[
         落霞与孤鹜齐飞\
         秋水共长天一色
-    ])
+    ]
 
-    #emph(text(size: 24pt)[
+    #text(size: 24pt)[
         ﹝唐﹞王勃《滕王阁序》
-    ])
+    ]
 ]
 "#.to_owned();
 

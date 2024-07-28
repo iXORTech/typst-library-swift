@@ -26,3 +26,29 @@ This project relies on the following open-source projects:
 
 This project heavily relies on the implementation of [tfachmann/typst-as-library](https://github.com/tfachmann/typst-as-library)
 for the Typst Wrapper in Rust, and other implementations to interact with the Typst Library.
+
+### Embedded Fonts
+
+To make sure that the Typst Library can render the text whenever the library is used, some fonts are embedded in the Swift package.
+
+They are **all** open-source fonts, licensed under the [SIL Open Font License](https://openfontlicense.org/).
+
+The fonts are:
+
+- [CMU* Concrete](https://fontlibrary.org/en/font/cmu-concrete)
+- [CMU* Sans Serif](https://fontlibrary.org/en/font/cmu-sans-serif)
+- [CMU* Serif](https://fontlibrary.org/en/font/cmu-serif)
+- [CMU* Typewriter](https://fontlibrary.org/en/font/cmu-typewriter)
+- [IBM Plex Mono](https://www.ibm.com/plex/)
+- [IBM Plex Sans](https://www.ibm.com/plex/)
+- [IBM Plex Serif](https://www.ibm.com/plex/)
+- [STIX Two Math](https://stixfonts.org/)
+- [LXGW WenKai Mono Lite](https://github.com/lxgw/LxgwWenKai-Lite)
+
+* CMU stands for Computer Modern Unicode, which is a [derivative of the Computer Modern font family](https://en.wikipedia.org/wiki/Computer_Modern).
+
+By default, the fonts always falls backs to:
+
+- STIX Two Math for mathematical formulas
+- IBM Plex Mono for raw text (e.g. code)
+- IBM Plex Sans and LXGW WenKai Mono Lite for normal text (LXGW WenKai Mono Lite is used for characters that are not supported by IBM Plex Sans, such as Chinese characters)

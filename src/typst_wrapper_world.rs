@@ -223,14 +223,16 @@ fn fonts() -> Vec<Font> {
     let mut fonts: Vec<Font> = Vec::new();
 
     // Load All Embedded Fonts
-    let lxgw_wen_kai_mono_lite: &[u8] = include_bytes!("../embedded-fonts/LXGWWenKaiMonoLite.ttf");
-    let jetbains_mono : &[u8] = include_bytes!("../embedded-fonts/JetBrainsMono.ttf");
-    let stix_two_math_regular: &[u8] = include_bytes!("../embedded-fonts/STIXTwoMath-Regular.ttf");
-
-    let embedded_fonts = vec![
-        lxgw_wen_kai_mono_lite,
-        jetbains_mono,
-        stix_two_math_regular,
+    let embedded_fonts: Vec<&[u8]> = vec![
+        include_bytes!("../embedded-fonts/CMUConcrete.ttf"),
+        include_bytes!("../embedded-fonts/CMUSansSerif.ttf"),
+        include_bytes!("../embedded-fonts/CMUSerif.ttf"),
+        include_bytes!("../embedded-fonts/CMUTypewriter.ttf"),
+        include_bytes!("../embedded-fonts/IBMPlexMono.ttf"),
+        include_bytes!("../embedded-fonts/IBMPlexSans.ttf"),
+        include_bytes!("../embedded-fonts/IBMPlexSerif.ttf"),
+        include_bytes!("../embedded-fonts/LXGWWenKaiMonoLite.ttf"),
+        include_bytes!("../embedded-fonts/STIXTwoMath-Regular.ttf"),
     ];
 
     embedded_fonts.iter().for_each(|font| {

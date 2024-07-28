@@ -1,6 +1,6 @@
 mod tests {
     use std::fs;
-    use typst_library_swift::get_rendered_document;
+    use typst_library_swift::{get_rendered_document_pdf, get_rendered_document_svg};
 
     #[test]
     fn test_get_rendered_document() {
@@ -68,9 +68,12 @@ A document (+ `polylux` library) rendered with `Typst`!
 ]
 "#.to_owned();
 
-        let document = get_rendered_document(source);
-
-        fs::write("./output.svg", document).expect("Error writing SVG.");
+        let svg = get_rendered_document_svg(source.clone());
+        fs::write("./output.svg", svg).expect("Error writing SVG.");
         println!("Created svg: `./output.svg`");
+
+        let pdf = get_rendered_document_pdf(source.clone());
+        fs::write("./output.pdf", pdf).expect("Error writing PDF.");
+        println!("Created pdf: `./output.pdf`");
     }
 }

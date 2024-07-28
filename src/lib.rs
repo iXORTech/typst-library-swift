@@ -1,4 +1,6 @@
 use typst::{eval::Tracer, layout::Abs};
+use typst::foundations::Smart;
+use typst::model::Document;
 
 mod typst_wrapper_world;
 
@@ -15,7 +17,7 @@ fn add_fallback_font(source: String) -> String {
     )
 }
 
-pub fn get_rendered_document(source: String) -> String {
+fn get_rendered_document(source: String) -> Document {
     let source = add_fallback_font(source);
 
     let world = typst_wrapper_world::TypstWrapperWorld::new(
@@ -24,9 +26,15 @@ pub fn get_rendered_document(source: String) -> String {
 
     // Render document
     let mut tracer = Tracer::default();
-    let document = typst::compile(&world, &mut tracer).expect("Error compiling typst.");
+    typst::compile(&world, &mut tracer).expect("Error compiling typst.")
+}
 
+pub fn get_rendered_document_svg(source: String) -> String {
     // Render SVG and return the SVG string
-    let svg = typst_svg::svg_merged(&document, Abs::pt(2.0));
-    svg
+    typst_svg::svg_merged(&get_rendered_document(source), Abs::pt(2.0))
+}
+
+pub fn get_rendered_document_pdf(source: String) -> Vec<u8> {
+    // Render PDF and return the PDF bytes
+    typst_pdf::pdf(&get_rendered_document(source), Smart::Auto, None)
 }

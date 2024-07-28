@@ -1,5 +1,6 @@
 
 // Keep this namespace, even when empty - otherwise binding generation will throw an error!
 namespace typst_library_swift {
-	string get_rendered_document(string source);
+	string get_rendered_document_svg(string source);
+	bytes get_rendered_document_pdf(string source);
 };

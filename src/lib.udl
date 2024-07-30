@@ -1,6 +1,6 @@
 enum SourceDiagnosticResultSeverity {
-  "Error",
-  "Warning",
+    "Error",
+    "Warning",
 };
 
 dictionary SourceDiagnosticResult {
@@ -14,8 +14,14 @@ dictionary SourceDiagnosticResult {
 
 [Traits=(Debug)]
 interface TypstCompilationError {
-  string message();
-  sequence<SourceDiagnosticResult> diagnostics();
+    string message();
+    sequence<SourceDiagnosticResult> diagnostics();
+};
+
+[Error]
+enum FileManagementError {
+    "FailedToSetWorkingDirectory",
+    "FailedToGetWorkingDirectory",
 };
 
 // Keep this namespace, even when empty - otherwise binding generation will throw an error!
@@ -24,4 +30,8 @@ namespace typst_library_swift {
 	string get_rendered_document_svg(string source);
 	[Throws=TypstCompilationError]
 	bytes get_rendered_document_pdf(string source);
+	[Throws=FileManagementError]
+	void set_working_directory(string path);
+	[Throws=FileManagementError]
+	string get_working_directory();
 };

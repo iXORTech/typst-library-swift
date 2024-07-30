@@ -122,3 +122,36 @@ pub fn get_rendered_document_pdf(source: String) -> Result<Vec<u8>, TypstCompila
     // Render PDF and return the PDF bytes
     Ok(typst_pdf::pdf(&get_rendered_document(source)?, Smart::Auto, None))
 }
+
+#[derive(Debug, thiserror::Error)]
+enum FileManagementError {
+    #[error("Failed to set working directory to `{path}`.")]
+    FailedToSetWorkingDirectory { path: String },
+    #[error("Failed to get current working directory. Error: {error}")]
+    FailedToGetWorkingDirectory { error: String} ,
+}
+
+pub fn set_working_directory(path: String) -> Result<(), FileManagementError> {
+    let r = std::env::set_current_dir(path.clone());
+    match r {
+        Ok(_) => Ok(()),
+        Err(_) => Err(FileManagementError::FailedToSetWorkingDirectory { path }),
+    }
+}
+
+pub fn get_working_directory() -> Result<String, FileManagementError> {
+    let r = std::env::current_dir();
+    match r {
+        Ok(path) => {
+            match path.to_str() {
+                Some(path_str) => Ok(path_str.to_owned()),
+                None => Err(FileManagementError::FailedToGetWorkingDirectory {
+                    error: "Failed to convert path to string.".to_owned()
+                }),
+            }
+        },
+        Err(err) => Err(FileManagementError::FailedToGetWorkingDirectory {
+            error: err.to_string()
+        }),
+    }
+}

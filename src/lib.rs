@@ -132,7 +132,11 @@ enum FileManagementError {
 }
 
 pub fn set_working_directory(path: String) -> Result<(), FileManagementError> {
-    let r = std::env::set_current_dir(path.clone());
+    let decoded = urlencoding::decode(&path);
+    if decoded.is_err() {
+        return Err(FileManagementError::FailedToSetWorkingDirectory { path });
+    }
+    let r = std::env::set_current_dir(decoded.unwrap().into_owned());
     match r {
         Ok(_) => Ok(()),
         Err(_) => Err(FileManagementError::FailedToSetWorkingDirectory { path }),
